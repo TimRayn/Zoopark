@@ -42,7 +42,7 @@ namespace ZibrariumApp
             string choiceRace = Console.ReadLine();
             switch (choiceRace)
             {
-                case "1":
+                case "1"://Dima
                     Console.WriteLine("Give him a name:");
                     string name = Console.ReadLine();
 
