@@ -6,13 +6,11 @@ using System.Threading.Tasks;
 
 namespace ZibrariumApp
 {
-    class Juravl : Animal
+    public enum AnimalType
     {
-        public Juravl(string name)
-            : base(name)
-        {
-
-        }
-
+        Penguin = 1,
+        Utkonos,
+        Juravl,
+        Ravlick
     }
 }

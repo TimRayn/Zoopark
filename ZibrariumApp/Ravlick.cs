@@ -8,8 +8,8 @@ namespace ZibrariumApp
 {
     class Ravlick : Animal
     {
-        Ravlick(string name, int id, int character) 
-            : base(name, id, character)
+        public Ravlick(string name) 
+            : base(name)
         {
 
         }

@@ -9,8 +9,8 @@ namespace ZibrariumApp
     class Utkonos : Animal
     {
         public int Eggs { get; set; }
-        public Utkonos(string name, int id, int character)
-            : base(name, id, character)
+        public Utkonos(string name)
+            : base(name)
         {
 
         }

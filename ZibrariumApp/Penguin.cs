@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace ZibrariumApp
 {
-    class Penguin : Animal
+    public class Penguin : Animal
     {
-        public Penguin(string name, int id, int character)
-           : base(name, id, character)
+        public Penguin(string name)
+           : base(name)
         {
             // добавить им чето свое
         }

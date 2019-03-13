@@ -8,18 +8,16 @@ namespace ZibrariumApp
 {
     public class Zoo
     {
-        public List<Animal> Animals { get; set; }
+        public List<Animal> Animals { get; set; } = new List<Animal>();
 
         public Zoo()
         {
-            
+
         }
 
-        public void Initialize()
+        public void AddNewAnimal(Animal animal)
         {
-            Animals = new List<Animal>();
-
-            
+            Animals.Add(animal);
         }
     }
 }

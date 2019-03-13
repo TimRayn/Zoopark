@@ -44,10 +44,11 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Animal.cs" />
-    <Compile Include="Interaction.cs" />
+    <Compile Include="AnimalType.cs" />
+    <Compile Include="ZooController.cs" />
     <Compile Include="Juravl.cs" />
     <Compile Include="Penguin.cs" />
-    <Compile Include="Maine.cs" />
+    <Compile Include="MainClass.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Ravlick.cs" />
     <Compile Include="Utkonos.cs" />

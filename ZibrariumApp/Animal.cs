@@ -9,14 +9,16 @@ namespace ZibrariumApp
     public abstract class Animal
     {
         public string Name { get; set; }
-        public int Id { get; set; }
+        private static int _animalCount;
+
+        public int Id { get; }
 
         private int _character;
         public int Character
         {
             get
             {
-                return Character;
+                return _character;
             }
             set
             {
@@ -25,16 +27,35 @@ namespace ZibrariumApp
         }
         public bool IsHungry { get; set; }
 
-        protected Animal(string name, int id, int character)
+        private Animal()
+        {
+            var random = new Random();
+            Character = random.Next(-100, 100);
+        }
+
+        protected Animal(string name) : this()
+        {
+            Name = name;
+            Id = _animalCount;
+            _animalCount++;
+        }
+
+        protected Animal(string name, int id) : this()
         {
             Name = name;
             Id = id;
-            Character = character;
+
+            _animalCount++;
         }
 
         public virtual void Pokormit()
         {
             Console.WriteLine("You pokormil jivotne.");
+        }
+
+        public override string ToString()
+        {
+            return $"{Id} - {GetType().Name} - {Name} - {Character}";
         }
     }
 
