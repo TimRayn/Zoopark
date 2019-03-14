@@ -11,36 +11,45 @@ namespace ZibrariumApp
         static void Main(string[] args)
         {
             var zoo = new Zoo();
-            ZooController zooController = new ZooController(zoo);
+            ILogger Logger = new ConsoleLogger();
+            IDataReader Reader = new ConsoleLogger();
+            ZooController zooController = new ZooController(zoo, Logger, Reader);
 
-            while (true)
+            try
             {
-                Console.WriteLine("Enter the number, that mean what do you want:\n" +
-                                  "1 - Add new animal;\n" +
-                                  "2 - Feed animal;\n" +
-                                  "3 - Pet animal;\n" +
-                                  "0 - Get out from fuking zoo!");
-                var act = Console.ReadLine();
-
-                switch (act)
+                while (true)
                 {
-                    case "1":
-                        var animal = zooController.CreateAnimal();
-                        break;
-                    case "4":
-                        Console.WriteLine(zooController.GetAnimalScroll());
-                        break;
-                    case "0":
-                        break;
+                    Logger.LogMessege("Enter the number, that mean what do you want:\n" +
+                                      "1 - Add new animal;\n" +
+                                      "2 - Feed animal;\n" +
+                                      "3 - Pet animal;\n" +
+                                      "0 - Get out from fuking zoo!");
+                    var act = Console.ReadLine();
+
+                    switch (act)
+                    {
+                        case "1":
+                            var animal = zooController.CreateAnimal();
+                            break;
+                        case "2":
+                            zooController.FeedAnimal();
+                            break;
+                        case "4":
+                            Logger.LogMessege(zooController.GetAnimalList());
+                            break;
+                        case "0":
+                            break;
+                    }
                 }
             }
+            catch
+            {
+                Logger.LogMessege("Vidimo, oshibka...");
+                Console.ReadKey();
+            }
 
-
-            //Animal penguin1 = new Penguin("Andrey", 1, 1);
-            //Animal juravl1 = new Juravl("Sanya", 1, 1);
-            //Animal utkonos1 = new Utkonos("Gena", 3, 10);
             //// список обьектов класса єнимал
-            //List<Animal> animals = new List<Animal>() {penguin1, juravl1, utkonos1};
+            //List<Animal> animals = new List<Animal>();
             //foreach (var item in animals)
             //{
             //    Console.WriteLine(item.Name);

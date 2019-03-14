@@ -10,11 +10,6 @@ namespace ZibrariumApp
     {
         public List<Animal> Animals { get; set; } = new List<Animal>();
 
-        public Zoo()
-        {
-
-        }
-
         public void AddNewAnimal(Animal animal)
         {
             Animals.Add(animal);

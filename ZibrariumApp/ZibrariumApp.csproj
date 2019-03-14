@@ -45,6 +45,9 @@
   <ItemGroup>
     <Compile Include="Animal.cs" />
     <Compile Include="AnimalType.cs" />
+    <Compile Include="ConsoleLogger.cs" />
+    <Compile Include="IDataReader.cs" />
+    <Compile Include="ILogger.cs" />
     <Compile Include="ZooController.cs" />
     <Compile Include="Juravl.cs" />
     <Compile Include="Penguin.cs" />
@@ -57,6 +60,10 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="ClassDiagram1.cd" />
+  </ItemGroup>
+  <ItemGroup>
+    <Analyzer Include="..\packages\Microsoft.DependencyValidation.Analyzers.0.10.0\analyzers\dotnet\cs\Microsoft.DependencyValidation.Analyzers.resources.dll" />
+    <Analyzer Include="..\packages\Microsoft.DependencyValidation.Analyzers.0.10.0\analyzers\dotnet\Microsoft.DependencyValidation.Analyzers.dll" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

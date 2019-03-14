@@ -10,6 +10,7 @@ namespace ZibrariumApp
     {
         public string Name { get; set; }
         private static int _animalCount;
+        private ILogger Logger { get; set; }
 
         public int Id { get; }
 
@@ -27,20 +28,22 @@ namespace ZibrariumApp
         }
         public bool IsHungry { get; set; }
 
-        private Animal()
+        private Animal(ILogger logger)
         {
+            Logger = logger;
             var random = new Random();
             Character = random.Next(-100, 100);
         }
 
-        protected Animal(string name) : this()
+        protected Animal(ILogger logger,string name) : this(logger)
         {
             Name = name;
             Id = _animalCount;
+
             _animalCount++;
         }
 
-        protected Animal(string name, int id) : this()
+        protected Animal(ILogger logger, string name, int id) : this(logger)
         {
             Name = name;
             Id = id;
@@ -48,14 +51,11 @@ namespace ZibrariumApp
             _animalCount++;
         }
 
-        public virtual void Pokormit()
-        {
-            Console.WriteLine("You pokormil jivotne.");
-        }
+        public abstract void Pokormit();
 
         public override string ToString()
         {
-            return $"{Id} - {GetType().Name} - {Name} - {Character}";
+            return $"ID: {Id};  Race: {GetType().Name};  Name: {Name};  Current character: {Character}";
         }
     }
 

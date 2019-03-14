@@ -8,16 +8,15 @@ namespace ZibrariumApp
 {
     class Utkonos : Animal
     {
-        public int Eggs { get; set; }
+        private ILogger Logger { get; set; }
         public Utkonos(string name)
             : base(name)
         {
 
         }
-
-        public void Bit()
+        public override void Pokormit()
         {
-            Console.WriteLine("Huyak! Utkonos otpizdil vas.");
+            Logger.LogMessege("You pokormile utkonosa. Zachem?");
         }
 
     }
