@@ -11,6 +11,7 @@ namespace ZibrariumApp
     class ZooController
     {
         private readonly Zoo _zoo;
+        //Todo: спрасіть Сергія
         private ILogger Logger { get; set; }
         private IDataReader Reader { get; set; }
         
@@ -36,7 +37,8 @@ namespace ZibrariumApp
 
         public Animal CreateAnimal()
         {
-            Animal animal = null;
+            //Todo: обгорнути в try..catch, логувати помилку
+            Animal animal;
          
 
             Logger.LogMessege("Choose a race:\n" +
@@ -73,7 +75,13 @@ namespace ZibrariumApp
                     throw new ArgumentOutOfRangeException();
             }
 
+            //Todo: здійснити підписку на івент
             return animal;
+        }
+
+        private void LogAnimalStatus(object sender, EventArgs args)
+        {
+            Logger.LogMessege(sender as string);
         }
 
         public void FeedAnimal()
@@ -88,12 +96,12 @@ namespace ZibrariumApp
             Logger.LogMessege("Введите имя того, кого хотите покормить:");
 
             string name = Reader.ReadLine();
+            //Todo: пізніше: зробити через LINQ без foreach
             foreach (var animal in _zoo.Animals)
             {
                 if (animal.Name == name)
                 {
-                    //var aType = animal.GetType();
-                    //Animal.Pokormit;
+                    animal.Pokormit();
                 }
                 else
                 {

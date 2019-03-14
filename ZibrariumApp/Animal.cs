@@ -10,32 +10,43 @@ namespace ZibrariumApp
     {
         public string Name { get; set; }
         private static int _animalCount;
-        private ILogger Logger { get; set; }
+
+
+        //Todo: створити таймер по якому тварина буде голоднішати
+        //Todo: створити івент OnStatusChange
+        //Todo: створити проперті Satiety, яка буде мінусуватись в методі таймеру
+        
+        //private ILogger Logger { get; set; }
 
         public int Id { get; }
 
         private int _character;
         public int Character
         {
-            get
-            {
-                return _character;
-            }
+            get => _character;
             set
             {
                 if (value >= -100 && value <= 100) _character = value;
             }
         }
-        public bool IsHungry { get; set; }
 
-        private Animal(ILogger logger)
+        private bool _isHungry;
+        public bool IsHungry { get => _isHungry;
+            set
+            {
+                //Todo: if(value == true) активувати івент (передати аргументом $"Animal {this} is hungry")
+                _isHungry = value;
+            }
+             }
+
+        private Animal()
         {
-            Logger = logger;
+            //Logger = logger;
             var random = new Random();
             Character = random.Next(-100, 100);
         }
 
-        protected Animal(ILogger logger,string name) : this(logger)
+        protected Animal(string name) : this()
         {
             Name = name;
             Id = _animalCount;
@@ -43,7 +54,7 @@ namespace ZibrariumApp
             _animalCount++;
         }
 
-        protected Animal(ILogger logger, string name, int id) : this(logger)
+        protected Animal(string name, int id) : this()
         {
             Name = name;
             Id = id;

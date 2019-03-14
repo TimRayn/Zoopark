@@ -8,6 +8,7 @@ namespace ZibrariumApp
 {
     public class ConsoleLogger : ILogger, IDataReader
     {
+        //Todo: зробити логування різним кольором
         public void LogMessege(string messege)
         {
             Console.WriteLine(messege);
