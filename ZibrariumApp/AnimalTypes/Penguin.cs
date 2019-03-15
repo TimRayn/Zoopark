@@ -8,7 +8,7 @@ namespace ZibrariumApp
 {
     public class Penguin : Animal
     {
-        private ILogger Logger { get; set; }
+        
         public Penguin(string name)
            : base(name)
         {
@@ -17,7 +17,7 @@ namespace ZibrariumApp
 
         public override void Pokormit()
         {
-            Logger.LogMessege("You pokormile penguina. On pokazal vam middle palec.");
+            DoOnMessage("You pokormile penguina. On pokazal vam middle palec.");
         }
 
     }

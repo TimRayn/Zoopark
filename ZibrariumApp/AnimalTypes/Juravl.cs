@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace ZibrariumApp
 {
-    class Juravl : Animal
+    public class Juravl : Animal
     {
-        private ILogger Logger { get; set; }
+   
         public Juravl(string name)
             : base(name)
         {
@@ -16,7 +16,7 @@ namespace ZibrariumApp
         }
         public override void Pokormit()
         {
-            Logger.LogMessege("You pokormile juravlya. Iz vazi. On posmotrel na vas osujdayushche.");
+            DoOnMessage("You pokormile juravlya. Iz vazi. On posmotrel na vas osujdayushche.");
         }
     }
 }

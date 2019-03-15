@@ -8,7 +8,7 @@ namespace ZibrariumApp
 {
     class Ravlick : Animal
     {
-        private ILogger Logger { get; set; }
+      
         public Ravlick(string name) 
             : base(name)
         {
@@ -17,7 +17,7 @@ namespace ZibrariumApp
 
         public override void Pokormit()
         {
-            Logger.LogMessege("You pokormile ravlicka. On pokushal.");
+            DoOnMessage("You pokormile ravlicka. On pokushal.");
         }
     }
 }

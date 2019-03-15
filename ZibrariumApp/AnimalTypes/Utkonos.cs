@@ -8,7 +8,7 @@ namespace ZibrariumApp
 {
     class Utkonos : Animal
     {
-        private ILogger Logger { get; set; }
+      
         public Utkonos(string name)
             : base(name)
         {
@@ -16,7 +16,7 @@ namespace ZibrariumApp
         }
         public override void Pokormit()
         {
-            Logger.LogMessege("You pokormile utkonosa. Zachem?");
+            DoOnMessage("You pokormile utkonosa. Zachem?");
         }
 
     }

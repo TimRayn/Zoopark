@@ -10,16 +10,16 @@ namespace ZibrariumApp
     {
         static void Main(string[] args)
         {
-            var zoo = new Zoo();
+            Zoo zoo = new Zoo();
             ILogger Logger = new ConsoleLogger();
-            IDataReader Reader = new ConsoleLogger();
+            IDataReader Reader = new DataReader();
             ZooController zooController = new ZooController(zoo, Logger, Reader);
 
             try
             {
                 while (true)
                 {
-                    Logger.LogMessege("Enter the number, that mean what do you want:\n" +
+                    Logger.LogMessage("Enter the number, that mean what do you want:\n" +
                                       "1 - Add new animal;\n" +
                                       "2 - Feed animal;\n" +
                                       "3 - Pet animal;\n" +
@@ -34,28 +34,25 @@ namespace ZibrariumApp
                         case "2":
                             zooController.FeedAnimal();
                             break;
+                        case "3":
+                            Logger.LogMessage("Эту функцию еще не завезли.", ConsoleColor.Yellow);
+                            break;
                         case "4":
-                            Logger.LogMessege(zooController.GetAnimalList());
+                            Logger.LogMessage(zooController.GetAnimalList());
                             break;
                         case "0":
+                            zooController.Exit();
                             break;
                     }
                 }
             }
-            catch
+            catch(Exception e)
             {
-                Logger.LogMessege("Vidimo, oshibka...");
+                Logger.LogMessage($"Ошибка в мейне.\nError:\n{e}", ConsoleColor.Red);
                 Console.ReadKey();
             }
 
-            //// список обьектов класса єнимал
-            //List<Animal> animals = new List<Animal>();
-            //foreach (var item in animals)
-            //{
-            //    Console.WriteLine(item.Name);
-            //}
-            //penguin1.Pokormit();
-            //juravl1.Pokormit();
+
             Console.ReadKey();
         }
     }

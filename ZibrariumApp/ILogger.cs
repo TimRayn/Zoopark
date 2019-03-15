@@ -8,9 +8,11 @@ namespace ZibrariumApp
 {
     //Todo: створити ще одну реалізацію - TxtLogger, який буде логувати в файл log.txt
      public interface ILogger
-    {
-        void LogMessege(string messege);
+     {
+         void LogMessage(string message, ConsoleColor color);
+         void LogMessage(string message);
 
-        void LogError();
-    }
+         void LogError(string errorMessage, Exception e);
+         void LogError(string errorMessage);
+     }
 }

@@ -6,22 +6,32 @@ using System.Threading.Tasks;
 
 namespace ZibrariumApp
 {
-    public class ConsoleLogger : ILogger, IDataReader
+    public class ConsoleLogger : ILogger
     {
-        //Todo: зробити логування різним кольором
-        public void LogMessege(string messege)
+        public void LogMessage(string message, ConsoleColor color)
         {
-            Console.WriteLine(messege);
+            Console.ForegroundColor = color;
+            Console.WriteLine(message);
+            Console.ResetColor();
         }
 
-        public void LogError()
+        public void LogMessage(string message)
         {
-            throw new NotImplementedException();
+            Console.WriteLine(message);
         }
 
-        public string ReadLine()
+
+
+        public void LogError(string errorMessage, Exception e)
         {
-            return Console.ReadLine();
+            Console.WriteLine(errorMessage);
+            Console.WriteLine($"Ошибка:\n{e}");
         }
+
+        public void LogError(string errorMessage)
+        {
+            Console.WriteLine(errorMessage);
+        }
+
     }
 }

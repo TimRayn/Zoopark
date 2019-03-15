@@ -10,13 +10,18 @@ namespace ZibrariumApp
     {
         public string Name { get; set; }
         private static int _animalCount;
-
-
+        public event EventHandler<string> OnMessage;
+        public event EventHandler OnCreate;
         //Todo: створити таймер по якому тварина буде голоднішати
         //Todo: створити івент OnStatusChange
         //Todo: створити проперті Satiety, яка буде мінусуватись в методі таймеру
-        
-        //private ILogger Logger { get; set; }
+
+
+        protected void DoOnMessage(string message)
+        {
+            OnMessage.Invoke(this, message);
+        }
+
 
         public int Id { get; }
 
@@ -44,6 +49,7 @@ namespace ZibrariumApp
             //Logger = logger;
             var random = new Random();
             Character = random.Next(-100, 100);
+           
         }
 
         protected Animal(string name) : this()
@@ -60,6 +66,20 @@ namespace ZibrariumApp
             Id = id;
 
             _animalCount++;
+        }
+
+        protected Animal(string name, int id, int character) : this()
+        {
+            Name = name;
+            Id = id;
+            Character = character;
+
+            _animalCount++;
+        }
+
+        public void Create()
+        {
+            OnCreate?.Invoke(this, null);
         }
 
         public abstract void Pokormit();
