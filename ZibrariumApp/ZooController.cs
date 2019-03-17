@@ -40,7 +40,6 @@ namespace ZibrariumApp
         {
             Animal animal;
 
-            //Todo: обгорнути в try..catch, логувати помилку
             Logger.LogMessage("Enter animal name:");
             var name = Reader.ReadLine();
             try

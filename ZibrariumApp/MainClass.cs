@@ -11,7 +11,7 @@ namespace ZibrariumApp
         static void Main(string[] args)
         {
             Zoo zoo = new Zoo();
-            ILogger Logger = new ConsoleLogger();
+            ILogger Logger = new TxtLogger();
             IDataReader Reader = new DataReader();
             ZooController zooController = new ZooController(zoo, Logger, Reader);
 
@@ -19,7 +19,7 @@ namespace ZibrariumApp
             {
                 while (true)
                 {
-                    Logger.LogMessage("Enter the number, that mean what do you want:\n" +
+                    Logger.LogMessage("\nEnter the number, that mean what do you want:\n" +
                                       "1 - Add new animal;\n" +
                                       "2 - Feed animal;\n" +
                                       "3 - Pet animal;\n" +

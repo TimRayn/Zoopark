@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 
 namespace ZibrariumApp
 {
-    //Todo: створити ще одну реалізацію - TxtLogger, який буде логувати в файл log.txt
      public interface ILogger
      {
          void LogMessage(string message, ConsoleColor color);
