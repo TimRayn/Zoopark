@@ -78,9 +78,10 @@ namespace ZibrariumApp
 
                 animal.OnMessage += DoOnMessage;
                 animal.OnCreate += AnimalOnOnCreate;
+                animal.OnStatusChange += AnimalOnOnStatusChange;
+                            animal.OnStatusChange += AnimalCheckIsDead;    
 
                 animal.Create();
-                //Todo: здійснити підписку на івент
                 return animal;
             }
             catch (ArgumentOutOfRangeException)
@@ -94,6 +95,22 @@ namespace ZibrariumApp
             }
 
             return animal = null;
+        }
+
+        private void AnimalCheckIsDead(object sender, bool e)
+        {
+            if (e == true)
+            {
+                var animal = (Animal) sender;
+                Zoo.Animals.Remove(animal);
+                Logger.LogMessage($"{animal.Name} die.");
+            }
+        }
+
+        private void AnimalOnOnStatusChange(object sender, bool e)
+        {
+            var animal = (Animal) sender;
+            Logger.LogMessage("");
         }
 
         private void AnimalOnOnCreate(object sender, EventArgs e)
@@ -110,8 +127,6 @@ namespace ZibrariumApp
             var animal = (Animal) sender;
             Logger.LogMessage($"{animal.Name} - {message}");
         }
-
-      
 
         public void FeedAnimal()
         {

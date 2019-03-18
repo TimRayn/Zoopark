@@ -2,19 +2,25 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
+using System.Timers;
 
 namespace ZibrariumApp
 {
-    public abstract class Animal
+    public abstract class Animal 
     {
         public string Name { get; set; }
+        public int Satiety { get; set; }        //for timer
         private static int _animalCount;
         public event EventHandler<string> OnMessage;
         public event EventHandler OnCreate;
+        public event EventHandler<bool> OnStatusChange;       //for timer
+        private Timer Golodomor { get; set; }           //for timer
+
         //Todo: створити таймер по якому тварина буде голоднішати
         //Todo: створити івент OnStatusChange
         //Todo: створити проперті Satiety, яка буде мінусуватись в методі таймеру
+
+
 
 
         protected void DoOnMessage(string message)
@@ -36,20 +42,37 @@ namespace ZibrariumApp
         }
 
         private bool _isHungry;
-        public bool IsHungry { get => _isHungry;
+        public bool IsHungry
+        {
+            get => _isHungry;
             set
             {
                 //Todo: if(value == true) активувати івент (передати аргументом $"Animal {this} is hungry")
+                if (value == true)
+                {
+                    OnStatusChange.Invoke(this, value);
+                }
                 _isHungry = value;
             }
-             }
+        }
+        private void CreateTimer()
+        {
+            Golodomor = new Timer();
+            Golodomor.Enabled = true;
+            Golodomor.Interval = 10000;
+            Golodomor.Elapsed += GolodomorOnElapsed;
+            Golodomor.AutoReset = false;
+        }
+        private void GolodomorOnElapsed(object sender, ElapsedEventArgs e)
+        {
+            IsHungry = true;
+        }
 
         private Animal()
         {
-            //Logger = logger;
             var random = new Random();
             Character = random.Next(-100, 100);
-           
+            CreateTimer();
         }
 
         protected Animal(string name) : this()
